@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_223642) do
+ActiveRecord::Schema.define(version: 2018_08_08_160239) do
 
   create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "recipe_name"
+    t.string "description"
+    t.integer "calories"
+    t.integer "carbs"
+    t.integer "fats"
+    t.integer "protein"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   # <- Start Associations->
   has_one :profile
+  has_many :recipes
   # <-End Associations->
 
   # <-Start Validations->

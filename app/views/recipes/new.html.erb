@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "recipes", media: 'all', 'data-turbolinks-track': 'reload'%>
+<h1 class="recipe-creation-title">Submit a Recipe</h1>
+<div class="recipe-form">
+  <%= form_for @recipe, controller: 'recipes', action: 'create' do |f| %>
+  <div class="recipe-element">
+    <%= f.label :recipe_name %>
+    <%= f.text_field :recipe_name%>
+  </div>
+  <div class="recipe-element">
+    <%= f.label :description %>
+    <%= f.text_field :description%>
+  </div>
+  <div class="recipe-element">
+    <%= f.label :calories %>
+    <%= f.number_field :calories %>
+  </div>
+  <div class="recipe-element">
+    <%= f.label :carbs %>
+    <%= f.number_field :carbs%>
+  </div>
+  <div class="recipe-element">
+    <%= f.label :protein %>
+    <%= f.number_field :protein %>
+  </div>
+  <div class="recipe-element">
+    <%= f.label :fat %>
+    <%= f.number_field :fats %>
+  </div>
+    <%= f.submit "Create Recipe" %>
+    <% end %>
+</div>
