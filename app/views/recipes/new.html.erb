@@ -2,6 +2,7 @@
 <h1 class="recipe-creation-title">Submit a Recipe</h1>
 <div class="recipe-form">
   <%= form_for @recipe, controller: 'recipes', action: 'create' do |f| %>
+   <%= f.hidden_field :user_id, :value => @user.id%>
   <div class="recipe-element">
     <%= f.label :recipe_name %>
     <%= f.text_field :recipe_name%>

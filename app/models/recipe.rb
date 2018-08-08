@@ -12,5 +12,6 @@ class Recipe < ApplicationRecord
   # <- End Security ->
 
   # <- Start Methods ->
+
   # <- End Methods ->
 end
