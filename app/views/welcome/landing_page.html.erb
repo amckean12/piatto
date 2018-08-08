@@ -1,0 +1,13 @@
+<h1>Piatto</h1>
+<h2>Plan a Menu</h2>
+<h2>Beta</h2>
+
+<h2>Please Sign In </h2>
+  <%= form_for(:session, url: signin_path, :html => {:class => 'form-control'})do |f| %>
+    <%= f.text_field :email, :placeholder => "Email" %>
+    <br>
+    <%= f.password_field :password, :placeholder => "Password"%>
+    <br>
+    <%= f.submit "Login", :class => "login-button"%>
+<% end %>
+<p>Not registered? <%= link_to "Sign Up!", new_users_path %></p>
