@@ -1,0 +1,35 @@
+.profile-layout > div {
+  background: #eee;
+  padding: 1em;
+}
+
+.profile-layout > div:nth-child(odd) {
+  background: #ddd;
+}
+
+.profile-layout {
+  display:grid;
+  grid-template-columns: 25% 75%;
+}
+
+.profile-navigation {
+    list-style-type: none;
+    background-color: #f1f1f1;
+}
+
+.nav-element {
+    color: #000;
+    text-decoration: none;
+    padding: 1em;
+}
+
+/* Change the link color on hover */
+.nav-element:hover {
+    background-color: #555;
+    color: white;
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
