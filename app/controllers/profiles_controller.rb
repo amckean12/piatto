@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
-
+  layout "profile-layout"
   before_action :load_profile
-
   def show
     @user = current_user
   end

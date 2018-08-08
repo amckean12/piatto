@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag "profile-layout", media: 'all', 'data-turbolinks-track': 'reload'%>
+<div class="profile-layout">
+  <div>
+    <div class="profile-img">
+      <img src="https://uwosh.edu/studenthealth/wp-content/uploads/sites/26/2016/08/anonymous-headshot.jpg" alt="headshot-template">
+    </div>
+    <ul class="profile-navigation">
+      <li class="nav-element"><%= link_to "Hello #{@user.first_name}", profiles_path(@user)%></li>
+      <li class="nav-element">Build A Menu</li>
+      <li class="nav-element">Make A Recipe</li>
+      <li class="nav-element">Friends</li>
+      <li class="nav-element">Edit Profile</li>
+      <li class="nav-element"><%= link_to 'Logout', logout_path, :method => :delete %><li>
+    </ul>
+  </div>
+  <div>
+    <%= yield %>
+  </div>
+</div>
