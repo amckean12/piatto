@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.create(recipe_params)
     if @recipe.save
-      redirect_to recipes_path(@recipe)
+      redirect_to recipe_path(@recipe)
     else
       redirect_to new_recipes_path
     end
@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
   def show
     @user = current_user
-    @recipe = Recipe.find(params[:format])
+    @recipe = Recipe.find(params[:id])
     @creator = @recipe.user.first_name
   end
 

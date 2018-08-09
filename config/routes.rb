@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
 
-  resource :users
-  resource :profiles
-  resource :recipes
+  resources :users
+  resources :profiles
+  resources :recipes
 end
