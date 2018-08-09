@@ -17,10 +17,8 @@ class RecipesController < ApplicationController
 
   def show
     @user = current_user
-    @recipe = Recipe.find_by(params[:id])
-    creator = User.find_by(params[@recipe.user_id])
-    binding.pry
-    @creator = creator.first_name
+    @recipe = Recipe.find(params[:format])
+    @creator = @recipe.user.first_name
   end
 
   def index
