@@ -1,15 +1,24 @@
+<div class="new-user-landing-page">
+  <div class="new-user-landing-column">
+    <div class="new-user-welcome-text-box">
+      <h1>Piatto</h1>
+      <h2>Plan a Menu</h2>
+      <h2>Beta</h2>
+    </div>
+  </div>
+
+<div class="new-user-landing-column">
 <h1>Signup!</h1>
 <%= form_for @user, controller: 'users', action: 'create' do |f| %>
   <%= f.text_field :first_name, :placeholder => "First Name" %>
-  </div>
-  <div>
+  <br>
   <%= f.text_field :last_name, :placeholder => "Last Name"  %>
-  </div>
-  <div>
+  <br>
   <%= f.password_field :password, :placeholder => "Password"  %>
-  </div>
-  <div>
+  <br>
   <%= f.text_field :email, :placeholder => "Email"  %>
-  </div>
+  <br>
   <%= f.submit "Create User"%>
 <% end %>
+</div>
+</div>

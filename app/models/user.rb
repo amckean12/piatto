@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :friendships
   has_many :friends, :through => :friendships
+  has_many :meals
   # <-End Associations->
 
   # <-Start Validations->
