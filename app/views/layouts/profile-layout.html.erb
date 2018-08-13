@@ -8,7 +8,7 @@
       <li class="nav-element"><%= link_to "Hello #{@user.first_name}", profile_path(@user)%></li>
       <li class="nav-element">Build A Menu</li>
       <li class="nav-element"><%= link_to "Make A Recipe", new_recipe_path%></li>
-      <li class="nav-element"><%= link_to "Friends", friendships_index_path%></li>
+      <li class="nav-element"><%= link_to "Friends", friendships_path%></li>
       <li class="nav-element">Edit Profile</li>
       <li class="nav-element"><%= link_to 'Logout', logout_path, :method => :delete %><li>
     </ul>

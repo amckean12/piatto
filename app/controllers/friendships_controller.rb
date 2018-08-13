@@ -3,6 +3,7 @@ class FriendshipsController < ApplicationController
 
   def new
     @user = current_user
+    @users = User.all
   end
 
 
