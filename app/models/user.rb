@@ -4,6 +4,8 @@ class User < ApplicationRecord
   # <- Start Associations->
   has_one :profile
   has_many :recipes
+  has_many :friendships
+  has_many :friends, :through => :friendships
   # <-End Associations->
 
   # <-Start Validations->
