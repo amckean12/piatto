@@ -1,6 +1,11 @@
 class FriendshipsController < ApplicationController
   layout "profile-layout"
 
+  def new
+    @user = current_user
+  end
+
+
   def create
     @user = current_user
     @friendship = @user.friendships.build(:friend_id => params[:friend_id])
@@ -20,7 +25,7 @@ class FriendshipsController < ApplicationController
   def index
     @user = current_user
     @friends = @user.friends.all
-    
+
   end
 
 
