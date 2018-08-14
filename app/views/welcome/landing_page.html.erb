@@ -1,13 +1,31 @@
-<h1>Piatto</h1>
-<h2>Plan a Menu</h2>
-<h2>Beta</h2>
+<div class="landing-page">
+  <div class="landing-column">
+    <div class="welcome-text-box">
+      <h1>Piatto</h1>
+      <h2>Plan a Menu</h2>
+      <h2>Beta</h2>
+    </div>
+  </div>
 
-<h2>Please Sign In </h2>
-  <%= form_for(:session, url: signin_path, :html => {:class => 'form-control'})do |f| %>
-    <%= f.text_field :email, :placeholder => "Email" %>
-    <br>
-    <%= f.password_field :password, :placeholder => "Password"%>
-    <br>
-    <%= f.submit "Login", :class => "login-button"%>
-<% end %>
-<p>Not registered? <%= link_to "Sign Up!", new_users_path %></p>
+<div class="landing-column">
+  <div class="login-box">
+    <h2>Please Sign In </h2>
+      <%= form_for(:session, url: signin_path, :html => {:class => 'form-control'})do |f| %>
+        <div class="login-text-field">
+          <%= f.text_field :email, :placeholder => "Email" %>
+        </div>
+        <br>
+        <div class="login-text-field">
+          <%= f.password_field :password, :placeholder => "Password"%>
+        </div>
+        <br>
+        <div class="login-button">
+          <%= f.submit "Login", :class => "login-button"%>
+        </div>
+      <% end %>
+        <div class="new-user-route">
+          <p>Not registered? <%= link_to "Sign Up!", new_user_path %></p>
+        </div>
+      </div>
+    </div>
+</div>
