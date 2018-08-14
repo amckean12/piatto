@@ -1,10 +1,12 @@
 .profile-layout > div {
-  background: #eee;
+  background: #fff;
   padding: 1em;
+  height: 100%;
 }
 
 .profile-layout > div:nth-child(odd) {
-  background: #ddd;
+  background: #4caf50;
+  height: 100%;
 }
 
 .profile-layout {
@@ -14,13 +16,16 @@
 
 .profile-navigation {
     list-style-type: none;
-    background-color: #f1f1f1;
+    background-color: #4caf50;
+    width: 100%;
 }
 
 .nav-element {
-    color: #000;
+    font-family: 'Libre Franklin', sans-serif;
+    color: #fff;
     text-decoration: none;
-    padding: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 /* Change the link color on hover */
@@ -32,4 +37,12 @@
 .active {
     background-color: #4CAF50;
     color: white;
+}
+
+.profile-img {
+  text-align: center;
+}
+
+.profile-img img{
+  border-radius: 50%;
 }
