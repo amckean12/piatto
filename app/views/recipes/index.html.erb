@@ -4,10 +4,10 @@
     <div class="individual-recipe">
       <h3><%= link_to recipe.name, recipe_path(recipe) %></h3>
       <p><%= recipe.description %></p>
-      <p><%= recipe.calories %></p>
-      <p><%= recipe.carbs %></p>
-      <p><%= recipe.protein %></p>
-      <p><%= recipe.fats %></p>
+      <p>Calories: <%= recipe.calories %></p>
+      <p>Carbs: <%= recipe.carbs %></p>
+      <p>Protein: <%= recipe.protein %></p>
+      <p>Fats: <%= recipe.fats %></p>
       <ul class="recipe-actions">
         <li><%= link_to "Edit", edit_recipe_path(recipe) %></li>
         <li><%= link_to "Delete", recipe_path(recipe), data: {

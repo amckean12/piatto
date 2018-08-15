@@ -1,0 +1,25 @@
+<h1><%= @recipe.name %></h1>
+
+<h2>Description:</h2>
+<p><%= @recipe.description %></p>
+
+<h2>Calories:</h2>
+<p><%= @recipe.calories %></p>
+
+<h2>Carbs:</h2>
+<p><%= @recipe.carbs %></p>
+
+<h2>Protein:</h2>
+<p><%= @recipe.protein %></p>
+
+<h2>Fats:</h2>
+<p><%= @recipe.fats%></p>
+
+
+<div>
+  <ul class="recipe-actions">
+    <li><%= link_to "Back", recipes_path %></li>
+    <li><%= link_to "Edit", edit_recipe_path(@recipe) %></li>
+    <li><%= link_to "Delete", recipe_path(@recipe), method: :delete %></li>
+  </ul>
+</div>
