@@ -4,7 +4,7 @@ class Recipe < ApplicationRecord
   # <-End Associations->
 
   # <-Start Validations->
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: {scope: :user_id}
   validates :description, presence: true
   validates :calories, presence: true
   validates :carbs, presence: true
