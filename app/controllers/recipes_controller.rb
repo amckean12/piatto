@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def create
+    binding.pry
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       redirect_to recipe_path(@recipe)
@@ -22,6 +23,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    creator = @recipe.user
+    @creator = creator.first_name
   end
 
   def destroy
@@ -38,7 +41,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :calories, :carbs, :protein, :fats)
+    params.require(:recipe).permit(:name, :description, :calories, :carbs, :protein, :fats, :user_id)
   end
 
 end
