@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   # <- Start Associations->
   has_one :profile
+  has_many :menus
+  has_many :recipes
   # <-End Associations->
 
   # <-Start Validations->
@@ -16,5 +18,11 @@ class User < ApplicationRecord
   # <- End Security ->
 
   # <- Start Methods ->
+  def recipe_options
+    @recipes = Recipe.all
+    @recipes.map do |recipe|
+    [ recipe.name, recipe.id]
+    end
+  end
   # <- End Methods ->
 end

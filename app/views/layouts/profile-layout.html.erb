@@ -7,7 +7,7 @@
     </div>
     <ul class="profile-navigation">
       <li class="nav-element"><%= link_to "Hello #{@user.first_name}", profile_path(@user), :class => "nav-element"%></li>
-      <li class="nav-element">Build A Menu</li>
+      <li class="nav-element"><%= link_to "Build a Menu", new_menu_path, :class => "nav-element"%></li>
       <li class="nav-element"><%= link_to "Recipes", recipes_path, :class => "nav-element"%></li>
       <li class="nav-element"><%= link_to "Add A Recipe", new_recipe_path, :class => "nav-element"%></li>
       <li class="nav-element">Edit Profile</li>

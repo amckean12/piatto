@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
   # <- Start Associations->
+  belongs_to :menu, inverse_of: :meals
   belongs_to :recipe
-  belongs_to :menu
   # <-End Associations->
 
   # <-Start Validations->

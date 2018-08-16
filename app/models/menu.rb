@@ -1,6 +1,10 @@
 class Menu < ApplicationRecord
+
   # <- Start Associations->
   belongs_to :user
+  has_many :meals, -> { order(:date) }, inverse_of: :menu, dependent: :destroy
+  has_many :recipes, through: :meals
+  accepts_nested_attributes_for :meals
   # <-End Associations->
 
   # <-Start Validations->
@@ -15,13 +19,14 @@ class Menu < ApplicationRecord
 
   # <- Start Methods ->
   def build_menu
-    recipe_ids = user.recipes.pluck(:id)
+    collect_recipes
     (start_date..end_date).each do |date|
-      unused_recipes = recipe_ids - meals.map(&:recipe_id)
-      available_recipes = unused_recipes.empty? ? recipe_ids : unused_recipes
-      meals.build(date: date, recipe_id: available_recipes.sample)
+      meals.build(date: date, recipe_id: @recipes.sample)
     end
   end
 
+  def collect_recipes
+    @recipes = Recipe.all.pluck(:id)
+  end
   # <- End Methods ->
 end
