@@ -27,11 +27,26 @@ class RecipesController < ApplicationController
     @creator = creator.first_name
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update_attributes(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     recipe = Recipe.find(params[:id])
     recipe.destroy
     redirect_to recipes_path, notice: "Deleted Recipe: #{recipe.name}"
   end
+
 
 
   private
