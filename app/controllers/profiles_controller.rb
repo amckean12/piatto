@@ -5,7 +5,8 @@ class ProfilesController < ApplicationController
   before_action :set_user
 
   def show
-    @menu = Menu.order("created_at").last
+    @menus = @user.menus
+    @menu = @menus.order("created_at").last
   end
 
   private
