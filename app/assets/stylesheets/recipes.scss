@@ -2,13 +2,59 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Recipe Form */
+
+.recipe-form {
+  width:500px;
+  position: absolute;
+  top:40%;
+  left: 60%;
+  transform: translate(-50%,-50%);
+  color:#4caf50;
+}
+
+.recipe-form-group {
+  width:100%;
+  overflow: hidden;
+  font-size:20px;
+  padding:8px 0;
+  margin:8px 0;
+  border-bottom: 1px solid #4caf50;
+}
+
+.recipe-form-group input {
+  font-family: 'Libre Franklin', sans-serif;
+  border:none;
+  outline: none;
+  background: none;
+  color:#4caf50;
+  font-size:18px;
+  width:80%;
+  float:left;
+  margin:0 10px;
+}
+
+.recipe-submit {
+  font-family: 'Libre Franklin', sans-serif;
+  width:100%;
+  background: none;
+  color:#4caf50;
+  padding:5px;
+  font-size: 18px;
+  margin:12px 0;
+}
+
 /* New Recipe CSS */
 .new-recipe-container h1{
+  font-family: 'Libre Franklin', sans-serif;
   text-align: center;
+  color: #4caf50;
 }
 
 
 /* Edit Recipe CSS */
 .edit-recipe-container {
+  font-family: 'Libre Franklin', sans-serif;
   text-align: center;
+  color: #4caf50;
 }
