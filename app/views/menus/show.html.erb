@@ -1,7 +1,14 @@
+<div>
 <h1>Test</h1>
-
-Params
-
 <%= @user.first_name %>
-<%= binding.pry %>
-<%= @menu %>
+
+<div class="menu-box">
+  <%= @menu.meals.each do |meal| %>
+    <div class="individual-recipe-from-menu">
+      <h3><%= meal.date.strftime("%A, %d/%m/%Y") %></h3>
+      <h3><%= meal.recipe.name %></h3>
+      <p><%= meal.recipe.description %></p>
+    </div>
+  <% end %>
+</div>
+</div>
