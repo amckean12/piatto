@@ -31,6 +31,7 @@ gem 'pry'
 # gem 'mini_magick', '~> 4.8'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
