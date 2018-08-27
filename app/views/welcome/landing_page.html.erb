@@ -3,7 +3,6 @@
     <div class="welcome-text-box">
       <h1>Piatto</h1>
       <h2>Plan a Menu</h2>
-      <h2>Beta</h2>
     </div>
   </div>
 
@@ -23,6 +22,9 @@
           <%= f.submit "Login", :class => "login-button"%>
         </div>
       <% end %>
+      <div class= "facebook-login">
+        <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+      </div>
         <div class="new-user-route">
           <p>Not registered? <%= link_to "Sign Up!", new_user_path %></p>
         </div>

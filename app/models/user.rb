@@ -21,7 +21,7 @@ class User < ApplicationRecord
   def recipe_options
     @recipes = Recipe.all
     @recipes.map do |recipe|
-    [ recipe.name, recipe.id]
+      [ recipe.name, recipe.id]
     end
   end
   # <- End Methods ->
