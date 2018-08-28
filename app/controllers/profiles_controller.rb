@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   before_action :require_login
   before_action :set_user
 
+
   def show
     @menus = @user.menus
     @menu = @menus.order("created_at").last

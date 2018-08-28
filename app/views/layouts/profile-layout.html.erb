@@ -6,7 +6,7 @@
       <img src="https://uwosh.edu/studenthealth/wp-content/uploads/sites/26/2016/08/anonymous-headshot.jpg" alt="headshot-template">
     </div>
     <ul class="profile-navigation">
-      <li class="nav-element"><%= link_to "Hello #{@user.first_name}", profile_path(@user), :class => "nav-element"%></li>
+      <li class="nav-element"><%= link_to "Hello #{@user.first_name}", user_profile_path(@user), :class => "nav-element"%></li>
       <li class="nav-element"><%= link_to "Build a Menu", new_menu_path, :class => "nav-element"%></li>
       <li class="nav-element"><%= link_to "Recipes", recipes_path, :class => "nav-element"%></li>
       <li class="nav-element"><%= link_to "Add A Recipe", new_recipe_path, :class => "nav-element"%></li>
