@@ -1,6 +1,6 @@
 <div class="new-user-landing-column">
   <div class="new-user-box">
-    <h2>Signup</h2>
+    <h2>Edit User</h2>
     <%= form_for @user, controller: 'users', action: 'create' do |f| %>
       <div class="new-user-text-field">
         <%= f.text_field :first_name, :placeholder => "First Name" %>
@@ -11,14 +11,10 @@
       </div>
       <br>
       <div class="new-user-text-field">
-        <%= f.password_field :password, :placeholder => "Password"  %>
-      </div>
-      <br>
-      <div class="new-user-text-field">
         <%= f.text_field :email, :placeholder => "Email"  %>
       </div>
       <br>
-        <%= f.submit "Create User", :class => "new-user-button"%>
+        <%= f.submit "Update User", :class => "new-user-button"%>
     <% end %>
   </div>
 </div>
