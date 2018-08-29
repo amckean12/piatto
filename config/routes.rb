@@ -6,16 +6,16 @@ Rails.application.routes.draw do
 
   #Login Routes
   post '/signin', to: 'sessions#create'
-  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#create_facebook'
   #Logout Routes
   get 'logout', to: 'sessions#destroy'
 
 
   resources :users do
     resource :profile
-
+    resources :recipes, only: [:show, :index]
   end
   #resources :profiles
-  resources :recipes
+  resources :recipes, except: [:show, :index]
   resources :menus
 end

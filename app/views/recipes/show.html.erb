@@ -21,8 +21,8 @@
 
 <div>
   <ul class="recipe-actions">
-    <li><%= link_to "Back", recipes_path %></li>
+    <li><%= link_to "Back", user_recipes_path %></li>
     <li><%= link_to "Edit", edit_recipe_path(@recipe) %></li>
-    <li><%= link_to "Delete", recipe_path(@recipe), method: :delete %></li>
+    <li><%= link_to "Delete", user_recipe_path(@recipe.user_id, @recipe.id), method: :delete %></li>
   </ul>
 </div>

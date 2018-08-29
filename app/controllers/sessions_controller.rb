@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
      if current_user
        @user = current_user
-       redirect_to profile_path(@user)
+       redirect_to user_profile_path(@user)
      else
        @user = User.new
      end
@@ -16,6 +16,10 @@ class SessionsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def create_facebook
+    binding.pry
   end
 
   def destroy

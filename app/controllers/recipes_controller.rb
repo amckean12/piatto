@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
-      redirect_to recipes_path(@recipe)
+      redirect_to user_recipes_path(@recipe)
     else
       render :new
     end
@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:user_id])
     creator = @recipe.user
     @creator = creator.first_name
   end
@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
 
     if @recipe.update_attributes(recipe_params)
-      redirect_to recipes_path(@recipe)
+      redirect_to user_recipes_path(@recipe)
     else
       render :edit
     end
