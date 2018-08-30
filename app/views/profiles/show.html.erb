@@ -4,7 +4,7 @@
   <%= @menu.meals.each do |meal| %>
     <div class="individual-recipe-from-menu">
       <h3><%= meal.date.strftime("%A, %d/%m/%Y") %></h3>
-      <h3><%= link_to meal.recipe.name, user_recipe_path(@user.id, meal.recipe.id)%></h3>
+      <h3><%= link_to meal.recipe.name, user_recipe_path(meal.recipe.user.id, meal.recipe.id)%></h3>
       <p><%= meal.recipe.description %></p>
     </div>
   <% end %>
