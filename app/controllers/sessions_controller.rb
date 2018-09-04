@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def create_facebook
-    
+
   end
 
   def destroy

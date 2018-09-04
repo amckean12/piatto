@@ -8,9 +8,10 @@ class User < ApplicationRecord
   # <-End Associations->
 
   # <-Start Validations->
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :first_name, presence: {message: "You Forgot to Enter in Your First Name"}
+  validates :last_name, presence: {message: "You Forgot to Enter in Your Last Name"}
+  validates :email, presence: {message: "You Forgot to Enter in Your Email"},
+                    uniqueness: {message: "This Email is Already Signed Up, Please Use Another"}
   # <- End Validations ->
 
   # <- Start Security ->

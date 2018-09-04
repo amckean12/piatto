@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'profile-layout'
+  layout 'profile-layout', :except => :new
 
   def new
     @user = User.new
@@ -11,7 +11,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to profile_path(@user)
     else
-      redirect_to new_user_path
+      @errors = {:error => @user.errors.messages}
+      redirect_to new_user_path, :flash => @errors
+      binding.pry
     end
   end
 
