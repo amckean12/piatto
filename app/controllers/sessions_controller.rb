@@ -14,13 +14,14 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_profile_path(@user)
     else
-      redirect_to root_path
+      redirect_to root_path, :flash => {:message => "Please enter an email or password"}
     end
   end
 
   def create_facebook
-
+    auth = request.env["omniauth.auth"]
   end
+
 
   def destroy
     if current_user

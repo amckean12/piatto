@@ -9,6 +9,11 @@
 <div class="landing-column">
   <div class="login-box">
     <h2>Please Sign In </h2>
+    <div class="user-login-errors">
+      <% flash.each do |key, value| %>
+        <%= value %>
+    <% end %>
+  </div>
       <%= form_for(:session, url: signin_path, :html => {:class => 'form-control'})do |f| %>
         <div class="login-text-field">
           <%= f.text_field :email, :placeholder => "Email" %>
@@ -23,7 +28,7 @@
         </div>
       <% end %>
       <div class= "facebook-login">
-        <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+        <%=link_to "Login via Facebook", "/auth/facebook"%>
       </div>
         <div class="new-user-route">
           <p>Not registered? <%= link_to "Sign Up!", new_user_path %></p>

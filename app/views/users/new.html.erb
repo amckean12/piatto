@@ -11,7 +11,9 @@
     <div class="new-user-box">
       <h2>Signup</h2>
       <div class="create-user-errors">
-        <%= @errors.messages.first if @errors %>
+        <% flash.each do |key, value| %>
+          <%= value.first[1].first %>
+      <% end %>
       </div>
       <%= form_for @user, controller: 'users', action: 'create' do |f| %>
         <div class="new-user-text-field">

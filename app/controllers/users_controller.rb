@@ -11,9 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to profile_path(@user)
     else
-      @errors = {:error => @user.errors.messages}
-      redirect_to new_user_path, :flash => @errors
-      binding.pry
+      redirect_to new_user_path, :flash => {:error => @user.errors.messages}
     end
   end
 
@@ -29,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to profile_path(@user)
+      redirect_to user_profile_path(@user)
     else
       render :edit
     end
