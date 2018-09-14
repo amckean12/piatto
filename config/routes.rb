@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :profile
-    resources :recipes, only: [:show, :index]
+    resources :recipes, only: [:show, :index, :new]
   end
   #resources :profiles
-  resources :recipes, except: [:show, :index]
+  resources :recipes, except: [:show, :index, :new]
   resources :menus
 end

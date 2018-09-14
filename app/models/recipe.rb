@@ -13,6 +13,11 @@ class Recipe < ApplicationRecord
   validates :user, presence: true
   # <- End Validations ->
 
+  # <- Start Scope Queries ->
+
+  # <- End Scope Queries ->
+
+
   # <- Start Security ->
 
   # <- End Security ->
