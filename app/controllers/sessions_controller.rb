@@ -19,7 +19,14 @@ class SessionsController < ApplicationController
   end
 
   def create_facebook
-    auth = request.env["omniauth.auth"]
+    if auth = request.env["omniauth.auth"]
+      @user = User.find_or_create_by_omniauth(auth)
+      session[:user_id] = @user.id
+      binding.pry
+      redirect_to user_profile_path(@user)
+    else
+      redirect_to root_path, :flash => {:message => "Unable to Authenticate From Facebook"}
+    end
   end
 
 
