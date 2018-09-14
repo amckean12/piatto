@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to profile_path(@user)
+      redirect_to user_profile_path(@user)
     else
       redirect_to new_user_path, :flash => {:error => @user.errors.messages}
     end
