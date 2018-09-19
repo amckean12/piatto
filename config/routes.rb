@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     resources :recipes, only: [:show, :index, :new]
   end
   #resources :profiles
-  resources :recipes, except: [:show, :index, :new]
+  resources :recipes, except: [:show, :index, :new] do
+    member do
+      get :under500
+    end
+  end
   resources :menus
 end

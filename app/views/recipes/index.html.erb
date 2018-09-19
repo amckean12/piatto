@@ -1,8 +1,7 @@
 <h1><%= @user.first_name%>'s Recipes</h1>
-<div class= "recipe-filter">
-  <%= link_to "Recipes Under 500 Calories", some recipe path%>
+<div class="under-500-button">
+  <h3><%=link_to "Recipes Under 500 Calories", under500_recipe_path(@user)%></h3>
 </div>
-<div class="recipes-list">
   <% @recipes.each do |recipe| %>
     <div class="individual-recipe">
       <h3><%= link_to recipe.name, user_recipe_path(recipe.user_id, recipe.id) %></h3>

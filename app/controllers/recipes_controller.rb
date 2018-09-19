@@ -46,6 +46,9 @@ class RecipesController < ApplicationController
     redirect_to recipes_path(@recipe), notice: "Deleted Recipe: #{recipe.name}"
   end
 
+  def under500
+  end
+
 
 
   private
