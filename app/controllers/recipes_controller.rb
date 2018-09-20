@@ -47,6 +47,7 @@ class RecipesController < ApplicationController
   end
 
   def under500
+    @recipes500 = Recipe.find_under_500
   end
 
 

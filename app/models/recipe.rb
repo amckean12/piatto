@@ -14,7 +14,9 @@ class Recipe < ApplicationRecord
   # <- End Validations ->
 
   # <- Start Scope Queries ->
-
+  def self.find_under_500
+    where('calories <= ?', 500)
+  end
   # <- End Scope Queries ->
 
 

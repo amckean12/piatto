@@ -1,1 +1,19 @@
-<h1>Tati</h1>
+<h1>Hello</h1>
+<div>
+  <% @recipes500.each do |recipe| %>
+    <div class="individual-recipe">
+      <h3><%= link_to recipe.name, user_recipe_path(recipe.user_id, recipe.id) %></h3>
+      <p><%= recipe.description %></p>
+      <p>Calories: <%= recipe.calories %></p>
+      <p>Carbs: <%= recipe.carbs %></p>
+      <p>Protein: <%= recipe.protein %></p>
+      <p>Fats: <%= recipe.fats %></p>
+      <ul class="recipe-actions">
+        <li><%= link_to "Edit", edit_recipe_path(recipe) %></li>
+        <li><%= link_to "Delete", user_recipe_path(recipe.user_id, recipe.id), data: {
+          confirm: "Are you sure you want to delete: #{recipe.name}?"
+        }, method: :delete %></li>
+      </ul>
+    </div>
+  <% end %>
+  </div>
