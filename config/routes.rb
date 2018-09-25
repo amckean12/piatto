@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :recipes, except: [:show, :index, :new, :under500] do
     member do
       get :under500
+      get :carbs_under_30
     end
   end
   resources :menus

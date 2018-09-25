@@ -17,6 +17,10 @@ class Recipe < ApplicationRecord
   def self.find_under_500
     where('calories <= ?', 500)
   end
+
+  def self.find_recipe_carbs_under_30
+    where("carbs <= ?", 30)
+  end
   # <- End Scope Queries ->
 
 

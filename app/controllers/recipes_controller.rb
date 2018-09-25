@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     if @recipe.save
       redirect_to user_recipes_path(@recipe)
     else
-      render :new
+      redirect_to new_user_recipe_path(@user)
     end
   end
 
@@ -48,6 +48,10 @@ class RecipesController < ApplicationController
 
   def under500
     @recipes500 = Recipe.find_under_500
+  end
+
+  def carbs_under_30
+    @recipes_under_30 = Recipe.find_recipe_carbs_under_30
   end
 
 
