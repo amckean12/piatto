@@ -4,6 +4,10 @@ $(document).ready(function() {
 
 function attachListeners(){
   $(".recipe-link").on("click", function(){
-    alert("You clicked this");
+    loadRecipes();
   });
+}
+
+
+function loadRecipes(){
 }

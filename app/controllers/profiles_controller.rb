@@ -6,8 +6,6 @@ class ProfilesController < ApplicationController
 
 
   def show
-    @menus = @user.menus
-    @menu = @menus.order("created_at").last
   end
 
   private
