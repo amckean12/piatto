@@ -10,4 +10,10 @@ function attachListeners(){
 
 
 function loadRecipes(){
+  let id = $(this).data("id");
+  $.get(`/users/id/recipes.json`, function(recipe){
+    $.each(recipe, function(key, value){
+      alert(key + ": " + value.name);
+    });
+  });
 }

@@ -2,20 +2,20 @@
 <%= javascript_include_tag "application" %>
 
 <div class="profile-layout">
-  <div>
+  <div class="profile-nav">
     <div class="profile-img">
       <img src="https://uwosh.edu/studenthealth/wp-content/uploads/sites/26/2016/08/anonymous-headshot.jpg" alt="headshot-template">
     </div>
     <ul class="profile-navigation">
       <li class="home-link"><%= link_to "Hello #{@user.first_name}", user_profile_path(@user), :class => "nav-element"%></li>
       <li class="new-menu-link"><%= link_to "Build a Menu", new_menu_path, :class => "nav-element"%></li>
-      <li class="recipe-link"><%= link_to "Recipes", user_recipes_path(@user), :class => "nav-element"%></li>
+      <button class="recipe-link">Recipes</button>
       <li class="new-recipe-link"><%= link_to "Add A Recipe", new_user_recipe_path(@user), :class => "nav-element"%></li>
       <li class="edit-user-link"><%= link_to "Edit User", edit_user_path(@user), :class => "nav-element"%></li>
       <li class="logout-link"><%= link_to 'Logout', logout_path, :method => :delete, :class => "nav-element"%><li>
     </ul>
   </div>
-  <div>
-    <%= yield %>
+  <div class="profile-content">
+    
   </div>
 </div>
