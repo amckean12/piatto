@@ -28,6 +28,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     creator = @recipe.user
     @creator = creator.first_name
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @recipe}
+    end
   end
 
   def edit

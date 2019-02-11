@@ -11,20 +11,34 @@ function attachListeners(){
   //This is a way to add an event listener to a button that hasnt been created yet
 
   $(".profile-content").on('click', ".listed-recipe-link", function(){
-    loadRecipeContent();
+    let data = $.parseJSON($(this).attr('data-button'));
+    loadRecipeContent(data);
   });
 }
 
 
 function loadRecipes(){
-  let id = $(this).data("id");
   $.get(`/users/id/recipes.json`, function(recipe){
     $.each(recipe, function(key, value){
-      $(".profile-content").append(`<button class="listed-recipe-link">${value.name}</button><br><br>`).data(value.id);
+      $(".profile-content").append(`<div class="recipe-${value.id}-container"><button class="listed-recipe-link" data-button="${value.id}">${value.name}</button></div>`);
     });
   });
 }
 
-function loadRecipeContent(){
-  alert("shes an easy loverrr");
+//name, description, calories, carbs, protein, fats
+
+function loadRecipeContent(recipe_id){
+  let recipeID = recipe_id
+  $.get(`/users/id/recipes/${recipeID}.json`, function(recipe){
+    $(`.recipe-${recipe.id}-container`).append(`<div class="recipe-contents">
+      <ul>
+        <li>${recipe.name}</li>
+        <li>Description: ${recipe.description}</li>
+        <li>Calories: ${recipe.calories}</li>
+        <li>Carbs: ${recipe.carbs}</li>
+        <li>Protein: ${recipe.protein}</li>
+        <li>Fats: ${recipe.fats}</li>
+      </ul>
+    </div>`);
+  })
 }
