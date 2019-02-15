@@ -18,6 +18,12 @@ function attachListeners(){
     let data = $.parseJSON($(this).attr('data-button'));
     createRecipePage(data);
   });
+
+  $(".profile-content").on('click', ".recipe-edit-button", function(){
+    let data = $.parseJSON($(this).attr('data-button'));
+    loadRecipeEditForm(data);
+  });
+
 }
 
 
@@ -39,20 +45,16 @@ function loadRecipeContent(recipe_id){
   $.get(`/users/id/recipes/${recipeID}.json`, function(recipe){
     //adding recipe description from show api to recipe container
     $(`.recipe-${recipe.id}-container`).append(`<div class="recipe-contents">
-      <ul>
-        <li>${recipe.name}</li>
-        <li>Description: ${recipe.description}</li>
-        <li>Calories: ${recipe.calories}</li>
-        <li>Carbs: ${recipe.carbs}</li>
-        <li>Protein: ${recipe.protein}</li>
-        <li>Fats: ${recipe.fats}</li>
-        <div class="visit-recipe-${recipe.id}-container"><button class="visit-recipe-link" data-button="${recipe.id}">Visit Recipe Page</button></div>
-      </ul>
+        <p>Description: ${recipe.description}</p>
+        <div class="visit-recipe-${recipe.id}-container">
+          <button class="visit-recipe-link" data-button="${recipe.id}">Visit Recipe Page</button>
+        </div>
+        <br></br>
     </div>`);
   })
 }
 
-//Need to add creator 
+//Need to add creator
 function createRecipePage(recipe_id){
   let recipeID = recipe_id;
   $(".loaded-recipes").remove();
@@ -71,6 +73,13 @@ function createRecipePage(recipe_id){
     <p>${recipe.fats}</p>
     <h2>Created By:</h2>
     <p>${recipe.creator}</p>
+    <div class="recipe-actions">
+      <button class="recipe-edit-button" data-button="${recipe.id}">Edit Recipe</button>
+    </div>
     </div>`)
   })
+}
+
+function loadRecipeEditForm(data){
+  alert(`this is recipe ${data}`);
 }
