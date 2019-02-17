@@ -81,5 +81,38 @@ function createRecipePage(recipe_id){
 }
 
 function loadRecipeEditForm(data){
-  alert(`this is recipe ${data}`);
+  $.get(`/users/id/recipes/${data}.json`, function(recipe){
+    $(".recipe-actions").append(`<h2>Edit ${recipe.name}</h2>
+      <form>
+        <div class="recipe-${recipe.id}-name-box">
+          Recipe Name:<br>
+          <input type="text" placeholder="${recipe.name}"><br>
+        </div>
+        <div class="recipe-${recipe.id}-description-box">
+          Recipe Description:<br>
+          <input type="text" placeholder="${recipe.description}"><br>
+        </div>
+        <div class="recipe-${recipe.id}-calories-box">
+          Recipe Calories:<br>
+          <input type="text" placeholder="${recipe.calories}"><br>
+        </div>
+        <div class="recipe-${recipe.id}-carbs-box">
+          Recipe Carbs:<br>
+          <input type="text" placeholder="${recipe.carbs}"><br>
+        </div>
+        <div class="recipe-${recipe.id}-protein-box">
+          Recipe Protein:<br>
+          <input type="text" placeholder="${recipe.protein}"><br>
+        </div>
+        <div class="recipe-${recipe.id}-fats-box">
+          Recipe Fats:<br>
+          <input type="text" placeholder="${recipe.fats}"><br>
+        </div>
+        <br>
+        <div class="recipe-${recipe.id}-submit">
+          <input type="submit" value="Edit Recipe">
+        </div>
+      </form>
+      `)
+  });
 }
