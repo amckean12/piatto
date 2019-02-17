@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  attachListeners();
+  attachRecipeListeners();
 });
 
-function attachListeners(){
+function attachRecipeListeners(){
   //When this button is clicked run the loadRecipes() function.
   $(".recipe-link").on("click", function(){
     loadRecipes();
@@ -22,6 +22,10 @@ function attachListeners(){
   $(".profile-content").on('click', ".recipe-edit-button", function(){
     let data = $.parseJSON($(this).attr('data-button'));
     loadRecipeEditForm(data);
+  });
+
+  $(".profile-content").on('submit', ".recipe-edit-form", function(){
+    alert("this was submitted");
   });
 
 }
@@ -62,17 +66,17 @@ function createRecipePage(recipe_id){
     $(".profile-content").append(`<div class="recipe-${recipe.id}-container">
     <h1>${recipe.name}</h1>
     <h2>Description:</h2>
-    <p>${recipe.description}</p>
+      <p>${recipe.description}</p>
     <h2>Calories:</h2>
-    <p>${recipe.calories}</p>
+      <p>${recipe.calories}</p>
     <h2>Carbs:</h2>
-    <p>${recipe.carbs}</p>
+      <p>${recipe.carbs}</p>
     <h2>Protein:</h2>
-    <p>${recipe.protein}</p>
+      <p>${recipe.protein}</p>
     <h2>Fats:</h2>
-    <p>${recipe.fats}</p>
+      <p>${recipe.fats}</p>
     <h2>Created By:</h2>
-    <p>${recipe.creator}</p>
+      <p>${recipe.creator}</p>
     <div class="recipe-actions">
       <button class="recipe-edit-button" data-button="${recipe.id}">Edit Recipe</button>
     </div>
@@ -83,7 +87,7 @@ function createRecipePage(recipe_id){
 function loadRecipeEditForm(data){
   $.get(`/users/id/recipes/${data}.json`, function(recipe){
     $(".recipe-actions").append(`<h2>Edit ${recipe.name}</h2>
-      <form>
+      <form class="recipe-edit-form">
         <div class="recipe-${recipe.id}-name-box">
           Recipe Name:<br>
           <input type="text" placeholder="${recipe.name}"><br>
