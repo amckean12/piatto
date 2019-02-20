@@ -24,10 +24,10 @@ function attachRecipeListeners(){
     loadRecipeEditForm(data);
   });
 
-  $(".profile-content").on('submit', ".recipe-edit-form", function(){
-    alert("this was submitted");
+  $(".profile-content").on('click', ".submit-edit-recipe-button", function(){
+    let data = $.parseJSON($(this).attr('data-button'));
+    updateRecipe(data);
   });
-
 }
 
 
@@ -87,36 +87,53 @@ function createRecipePage(recipe_id){
 function loadRecipeEditForm(data){
   $.get(`/users/id/recipes/${data}.json`, function(recipe){
     $(".recipe-actions").append(`<h2>Edit ${recipe.name}</h2>
-      <form class="recipe-edit-form">
         <div class="recipe-${recipe.id}-name-box">
           Recipe Name:<br>
-          <input type="text" placeholder="${recipe.name}"><br>
+          <input type="text" class="recipe-name-input" placeholder="${recipe.name}"><br>
         </div>
         <div class="recipe-${recipe.id}-description-box">
           Recipe Description:<br>
-          <input type="text" placeholder="${recipe.description}"><br>
+          <input type="text" class="recipe-description-input" placeholder="${recipe.description}"><br>
         </div>
         <div class="recipe-${recipe.id}-calories-box">
           Recipe Calories:<br>
-          <input type="text" placeholder="${recipe.calories}"><br>
+          <input type="number" class="recipe-calories-input" placeholder="${recipe.calories}"><br>
         </div>
         <div class="recipe-${recipe.id}-carbs-box">
           Recipe Carbs:<br>
-          <input type="text" placeholder="${recipe.carbs}"><br>
+          <input type="number" class="recipe-carbs-input" placeholder="${recipe.carbs}"><br>
         </div>
         <div class="recipe-${recipe.id}-protein-box">
           Recipe Protein:<br>
-          <input type="text" placeholder="${recipe.protein}"><br>
+          <input type="number" class="recipe-protein-input" placeholder="${recipe.protein}"><br>
         </div>
         <div class="recipe-${recipe.id}-fats-box">
           Recipe Fats:<br>
-          <input type="text" placeholder="${recipe.fats}"><br>
+          <input type="number" class="recipe-fats-input" placeholder="${recipe.fats}"><br>
         </div>
         <br>
         <div class="recipe-${recipe.id}-submit">
-          <input type="submit" value="Edit Recipe">
+          <button class="submit-edit-recipe-button" data-button=${recipe.id}>Submit Edit</button>
         </div>
-      </form>
       `)
   });
+}
+
+function updateRecipe(recipe_id){
+  let recipeID = recipe_id;
+  let recipeName = $('.recipe-name-input').val();
+  let recipeDescription = $('.recipe-description-input').val();
+  let recipeCalories = $('.recipe-calories-input').val();
+  let recipeCarbs = $('.recipe-carbs-input').val();
+  let recipeProtein = $('.recipe-protein-input').val();
+  let recipeFats = $('.recipe-fats-input').val();
+
+  let recipeData = {id: recipeID, name: recipeName, description: recipeDescription, calories: recipeCalories, carbs: recipeCarbs, protein: recipeProtein, fats: recipeFats};
+
+  $.ajax({
+    url: `/users/5/recipes/${recipeID}`,
+    type: 'patch',
+    dataType: 'json',
+    data: recipeData
+  })
 }
