@@ -2,6 +2,8 @@ $(document).ready(function() {
   attachRecipeListeners();
 });
 
+
+//Event Listeners for recipe actions
 function attachRecipeListeners(){
   //When this button is clicked run the loadRecipes() function.
   $(".recipe-link").on("click", function(){
@@ -14,16 +16,19 @@ function attachRecipeListeners(){
     loadRecipeContent(data);
   });
 
+  //Listening for visit recipe button click
   $(".profile-content").on('click', ".visit-recipe-link", function(){
     let data = $.parseJSON($(this).attr('data-button'));
     createRecipePage(data);
   });
 
+  //Listening for clicking of edit recipe button
   $(".profile-content").on('click', ".recipe-edit-button", function(){
     let data = $.parseJSON($(this).attr('data-button'));
     loadRecipeEditForm(data);
   });
 
+  //Listening for the submission of the edit recipe form
   $(".profile-content").on('click', ".submit-edit-recipe-button", function(){
     let data = $.parseJSON($(this).attr('data-button'));
     updateRecipe(data);
@@ -62,6 +67,7 @@ function loadRecipeContent(recipe_id){
 function createRecipePage(recipe_id){
   let recipeID = recipe_id;
   $(".loaded-recipes").remove();
+  //Build the html for a show recipe view using content from the api
   $.get(`/users/id/recipes/${recipeID}.json`, function(recipe){
     $(".profile-content").append(`<div class="recipe-${recipe.id}-container">
     <h1>${recipe.name}</h1>
@@ -85,6 +91,7 @@ function createRecipePage(recipe_id){
 }
 
 function loadRecipeEditForm(data){
+  //build the recipe edit "form" when user clicks edit recipe button on show recipe view
   $.get(`/users/id/recipes/${data}.json`, function(recipe){
     $(".recipe-actions").append(`<h2>Edit ${recipe.name}</h2>
         <div class="recipe-${recipe.id}-name-box">
