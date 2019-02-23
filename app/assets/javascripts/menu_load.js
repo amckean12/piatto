@@ -31,6 +31,5 @@ class Menu {
 
 function displayMenu(data){
   let currentUserMenu = data;
-  debugger;
-  $(".profile-content").append(`div class="menu"`)
+  $(".profile-content").append(`<div class="menu-${currentUserMenu.id}-container"></div>`)
 }
