@@ -12,6 +12,9 @@
       <button class="menu-link">My Current Menu</button>
       <br>
       <button class="recipe-link">Recipes</button>
+      <br>
+      <button class="recipe-create-link">Add A Recipe</button>
+      <br>
       <li class="new-recipe-link"><%= link_to "Add A Recipe", new_user_recipe_path(@user), :class => "nav-element"%></li>
       <li class="edit-user-link"><%= link_to "Edit User", edit_user_path(@user), :class => "nav-element"%></li>
       <li class="logout-link"><%= link_to 'Logout', logout_path, :method => :delete, :class => "nav-element"%><li>
