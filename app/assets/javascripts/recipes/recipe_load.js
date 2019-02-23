@@ -125,6 +125,8 @@ function loadRecipeEditForm(data){
   });
 }
 
+
+//This still is not working need to look into when have time issue: url for patch request is not found even though it is a real url. 
 function updateRecipe(recipe_id){
   let recipeID = recipe_id;
   let recipeName = $('.recipe-name-input').val();
@@ -144,6 +146,6 @@ function updateRecipe(recipe_id){
     data: recipeData
   })
   .done(function(json){
-
+    console.log("reicpe updated");
   })
 }
