@@ -32,12 +32,17 @@ class Menu {
 function displayMenu(data){
   let currentUserMenu = data;
   let currentUserMenuDays = currentUserMenu.meals
-  $(".profile-content").append(`<div class="menu-${currentUserMenu.id}-container">
+  $(".profile-content").append(`<div class="menu-box">
   </div>`)
   $.each(currentUserMenuDays, function(index, mealElement){
     //Add the mealElements to build the menu.
-    $(`.menu-${currentUserMenu.id}-container`).append(`
+    $(`.menu-box`).append(`
       <div class="meal-${mealElement.date}-container">
+      <div class="individual-recipe-from-menu">
+        <h2>${mealElement.date}</h2>
+        <h3>${mealElement.recipe.name}</h3>
+        <p>${mealElement.recipe.description}</p>
+      </div>
       </div>
       `);
   });
