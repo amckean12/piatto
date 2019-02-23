@@ -2,7 +2,6 @@ $(document).ready(function() {
   attachRecipeListeners();
 });
 
-
 //Event Listeners for recipe actions
 function attachRecipeListeners(){
   //When this button is clicked run the loadRecipes() function.
@@ -134,13 +133,17 @@ function updateRecipe(recipe_id){
   let recipeCarbs = $('.recipe-carbs-input').val();
   let recipeProtein = $('.recipe-protein-input').val();
   let recipeFats = $('.recipe-fats-input').val();
+  let url = `/users/5/recipes/${recipeID}`;
 
   let recipeData = {id: recipeID, name: recipeName, description: recipeDescription, calories: recipeCalories, carbs: recipeCarbs, protein: recipeProtein, fats: recipeFats};
 
   $.ajax({
-    url: `/users/5/recipes/${recipeID}`,
+    url: url,
     type: 'patch',
     dataType: 'json',
     data: recipeData
+  })
+  .done(function(json){
+
   })
 }
