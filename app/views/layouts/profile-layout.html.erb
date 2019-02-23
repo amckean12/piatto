@@ -9,6 +9,8 @@
     <ul class="profile-navigation">
       <li class="home-link"><%= link_to "Hello #{@user.first_name}", user_profile_path(@user), :class => "nav-element"%></li>
       <li class="new-menu-link"><%= link_to "Build a Menu", new_menu_path, :class => "nav-element"%></li>
+      <button class="menu-link">My Current Menu</button>
+      <br>
       <button class="recipe-link">Recipes</button>
       <li class="new-recipe-link"><%= link_to "Add A Recipe", new_user_recipe_path(@user), :class => "nav-element"%></li>
       <li class="edit-user-link"><%= link_to "Edit User", edit_user_path(@user), :class => "nav-element"%></li>
