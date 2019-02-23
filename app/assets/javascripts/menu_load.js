@@ -9,5 +9,11 @@ function attachMenuListeners(){
 }
 
 function loadMenu(){
-  alert("Hi");
+  $.ajax({
+    url: 'http://localhost:3000/menus',
+    method: 'get',
+    dataType: 'json'
+  }).done(function(data){
+    console.log("this is my data:", data)
+  })
 }

@@ -25,6 +25,12 @@ class MenusController < ApplicationController
     end
   end
 
+  #Rendering every menu created by the user
+  def index
+    @menus = @user.menus.all
+    render json: @menus
+  end
+
   private
 
   def set_user
