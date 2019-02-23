@@ -19,6 +19,10 @@ class MenusController < ApplicationController
 
   def show
     @menu = @user.menus.find(params[:id])
+    respond_to do |format|
+      format.html {render :show}
+      format.json {render json: @menu}
+    end
   end
 
   private
