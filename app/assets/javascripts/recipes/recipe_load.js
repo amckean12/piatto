@@ -49,43 +49,43 @@ function loadRecipes(){
 
 function loadRecipeContent(recipe_id){
   let recipeID = recipe_id
+  let recipeURL = `http://localhost:3000/users/id/recipes/${recipeID}`
   //pulling from api
-  $.get(`/users/id/recipes/${recipeID}.json`, function(recipe){
-    //adding recipe description from show api to recipe container
-    $(`.recipe-${recipe.id}-container`).append(`<div class="recipe-contents">
-        <p>Description: ${recipe.description}</p>
-        <div class="visit-recipe-${recipe.id}-container">
-          <button class="visit-recipe-link" data-button="${recipe.id}">Visit Recipe Page</button>
-        </div>
-        <br></br>
-    </div>`);
-  })
+  $.ajax({
+    url: recipeURL,
+    method: 'get',
+    dataType: 'json'
+  }).done(function(data){
+    let currentSelectedRecipe = new Recipe(data)
+    createRecipePage(currentSelectedRecipe);
+  });
+}
+
+class Recipe{
+  constructor(obj){
+    this.id = obj.id
+    this.name = obj.name
+    this.description = obj.description
+    this.calories = obj.calories
+    this.carbs = obj.carbs
+    this.protein = obj.protein
+    this.fats = obj.fats
+  }
 }
 
 //Need to add creator
-function createRecipePage(recipe_id){
-  let recipeID = recipe_id;
+function createRecipePage(recipe){
+  let completeRecipe = recipe;
   $(".loaded-recipes").remove();
   //Build the html for a show recipe view using content from the api
-  $.get(`/users/id/recipes/${recipeID}.json`, function(recipe){
-    $(".profile-content").append(`<div class="recipe-${recipe.id}-container">
-    <h1>${recipe.name}</h1>
-    <h2>Description:</h2>
-      <p>${recipe.description}</p>
-    <h2>Calories:</h2>
-      <p>${recipe.calories}</p>
-    <h2>Carbs:</h2>
-      <p>${recipe.carbs}</p>
-    <h2>Protein:</h2>
-      <p>${recipe.protein}</p>
-    <h2>Fats:</h2>
-      <p>${recipe.fats}</p>
-    <h2>Created By:</h2>
-      <p>${recipe.creator}</p>
-    <div class="recipe-actions">
-      <button class="recipe-edit-button" data-button="${recipe.id}">Edit Recipe</button>
-    </div>
-    </div>`)
+  $(".profile-content").append(`<div class="recipe-${completeRecipe.id}-container"></div>`)
+  $.each(completeRecipe, function(index, recipeElement){
+    $(`.recipe-${completeRecipe.id}-container`).append(`
+      <div class="recipe-content">
+      <h2>${index}</h2>
+      <p>${recipeElement}</p>
+      </div>
+      `)
   })
 }
 
@@ -126,7 +126,7 @@ function loadRecipeEditForm(data){
 }
 
 
-//This still is not working need to look into when have time issue: url for patch request is not found even though it is a real url. 
+//This still is not working need to look into when have time issue: url for patch request is not found even though it is a real url.
 function updateRecipe(recipe_id){
   let recipeID = recipe_id;
   let recipeName = $('.recipe-name-input').val();
