@@ -72,15 +72,42 @@ class Recipe{
     this.fats = obj.fats
   }
   displayRecipe(recipe){
-    alert("method activated");
-  }
+    $(".loaded-recipes").remove();
+    $(".profile-content").append(`<div class="recipe-${this.id}-container">
+      <button class"edit-recipe-button">Edit Recipe</button>
+    </div>`);
+    $(`.recipe-${this.id}-container`).append(`
+      <div class="recipe-content">
+        <h2>Name</h2>
+        <p>${this.name}</p>
+      </div>
+      <div class="recipe-content">
+        <h2>Description</h2>
+        <p>${this.description}</p>
+      </div>
+      <div class="recipe-content">
+        <h2>Calories</h2>
+        <p>${this.calories}</p>
+      </div>
+      <div class="recipe-content">
+        <h2>Carbs</h2>
+        <p>${this.carbs}</p>
+      </div>
+      <div class="recipe-content">
+        <h2>Protein</h2>
+        <p>${this.protein}</p>
+      </div>
+      <div class="recipe-content">
+        <h2>Fats</h2>
+        <p>${this.fats}</p>
+      </div>  `);
+    }
 }
 
 //Need to add creator
 function createRecipePage(recipe){
    let completeRecipe = recipe;
    completeRecipe.displayRecipe(recipe);
-  // $(".loaded-recipes").remove();
   // //Build the html for a show recipe view using content from the api
   // $(".profile-content").append(`<div class="recipe-${completeRecipe.id}-container"></div>`)
   // $.each(completeRecipe, function(index, recipeElement){
