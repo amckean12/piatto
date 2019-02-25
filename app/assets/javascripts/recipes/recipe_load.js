@@ -71,22 +71,26 @@ class Recipe{
     this.protein = obj.protein
     this.fats = obj.fats
   }
+  displayRecipe(recipe){
+    alert("method activated");
+  }
 }
 
 //Need to add creator
 function createRecipePage(recipe){
-  let completeRecipe = recipe;
-  $(".loaded-recipes").remove();
-  //Build the html for a show recipe view using content from the api
-  $(".profile-content").append(`<div class="recipe-${completeRecipe.id}-container"></div>`)
-  $.each(completeRecipe, function(index, recipeElement){
-    $(`.recipe-${completeRecipe.id}-container`).append(`
-      <div class="recipe-content">
-      <h2>${index}</h2>
-      <p>${recipeElement}</p>
-      </div>
-      `)
-  })
+   let completeRecipe = recipe;
+   completeRecipe.displayRecipe(recipe);
+  // $(".loaded-recipes").remove();
+  // //Build the html for a show recipe view using content from the api
+  // $(".profile-content").append(`<div class="recipe-${completeRecipe.id}-container"></div>`)
+  // $.each(completeRecipe, function(index, recipeElement){
+  //   $(`.recipe-${completeRecipe.id}-container`).append(`
+  //     <div class="recipe-content">
+  //     <h2>${index}</h2>
+  //     <p>${recipeElement}</p>
+  //     </div>
+  //     `)
+  // })
 }
 
 function loadRecipeEditForm(data){
