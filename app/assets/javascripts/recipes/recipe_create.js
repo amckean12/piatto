@@ -45,5 +45,5 @@ function displayNewRecipeForm(){
 }
 
 function submitNewRecipe(){
-  
+
 }
