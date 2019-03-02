@@ -45,5 +45,24 @@ function displayNewRecipeForm(){
 }
 
 function submitNewRecipe(){
+  let recipeName = $('.recipe-name-form').val();
+  let recipeDescription = $('.recipe-description-input').val();
+  let recipeCalories = $('.recipe-calories-input').val();
+  let recipeCarbs = $('.recipe-carbs-input').val();
+  let recipeProtein = $('.recipe-protein-input').val();
+  let recipeFats = $('.recipe-fats-input').val();
 
+  let recipeData = {name: recipeName, description: recipeDescription, calories: recipeCalories, carbs: recipeCarbs, protein: recipeProtein, fats: recipeFats};
+
+  let url = `recipes.json`;
+
+  $.ajax({
+    url: url,
+    type: "POST",
+    dataType: 'json',
+    data: recipeData
+  })
+  .done(function(json){
+    console.log("recipe updated");
+  })
 }
