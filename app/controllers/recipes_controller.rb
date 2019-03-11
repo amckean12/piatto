@@ -9,11 +9,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    if @recipe.save
-      redirect_to user_recipes_path(@recipe)
-    else
-      redirect_to new_user_recipe_path(@user)
-    end
+    render json: @recipe, status: 201
   end
 
   def index

@@ -20,18 +20,6 @@ function attachRecipeListeners(){
     let data = $.parseJSON($(this).attr('data-button'));
     createRecipePage(data);
   });
-
-  //Listening for clicking of edit recipe button
-  $(".profile-content").on('click', ".recipe-edit-button", function(){
-    let data = $.parseJSON($(this).attr('data-button'));
-    loadRecipeEditForm(data);
-  });
-
-  //Listening for the submission of the edit recipe form
-  $(".profile-content").on('click', ".submit-edit-recipe-button", function(){
-    let data = $.parseJSON($(this).attr('data-button'));
-    updateRecipe(data);
-  });
 }
 
 
@@ -65,65 +53,4 @@ function loadRecipeContent(recipe_id){
 function createRecipePage(recipe){
    let completeRecipe = recipe;
    completeRecipe.displayRecipe(recipe);
-}
-
-function loadRecipeEditForm(data){
-  //build the recipe edit "form" when user clicks edit recipe button on show recipe view
-  $.get(`/users/id/recipes/${data}.json`, function(recipe){
-    $(".recipe-actions").append(`<h2>Edit ${recipe.name}</h2>
-        <div class="recipe-${recipe.id}-name-box">
-          Recipe Name:<br>
-          <input type="text" class="recipe-name-input" placeholder="${recipe.name}"><br>
-        </div>
-        <div class="recipe-${recipe.id}-description-box">
-          Recipe Description:<br>
-          <input type="text" class="recipe-description-input" placeholder="${recipe.description}"><br>
-        </div>
-        <div class="recipe-${recipe.id}-calories-box">
-          Recipe Calories:<br>
-          <input type="number" class="recipe-calories-input" placeholder="${recipe.calories}"><br>
-        </div>
-        <div class="recipe-${recipe.id}-carbs-box">
-          Recipe Carbs:<br>
-          <input type="number" class="recipe-carbs-input" placeholder="${recipe.carbs}"><br>
-        </div>
-        <div class="recipe-${recipe.id}-protein-box">
-          Recipe Protein:<br>
-          <input type="number" class="recipe-protein-input" placeholder="${recipe.protein}"><br>
-        </div>
-        <div class="recipe-${recipe.id}-fats-box">
-          Recipe Fats:<br>
-          <input type="number" class="recipe-fats-input" placeholder="${recipe.fats}"><br>
-        </div>
-        <br>
-        <div class="recipe-${recipe.id}-submit">
-          <button class="submit-edit-recipe-button" data-button=${recipe.id}>Submit Edit</button>
-        </div>
-      `)
-  });
-}
-
-
-//This still is not working need to look into when have time issue: url for patch request is not found even though it is a real url.
-function updateRecipe(recipe_id){
-  let recipeID = recipe_id;
-  let recipeName = $('.recipe-name-input').val();
-  let recipeDescription = $('.recipe-description-input').val();
-  let recipeCalories = $('.recipe-calories-input').val();
-  let recipeCarbs = $('.recipe-carbs-input').val();
-  let recipeProtein = $('.recipe-protein-input').val();
-  let recipeFats = $('.recipe-fats-input').val();
-  let url = `/users/5/recipes/${recipeID}`;
-
-  let recipeData = {id: recipeID, name: recipeName, description: recipeDescription, calories: recipeCalories, carbs: recipeCarbs, protein: recipeProtein, fats: recipeFats};
-
-  $.ajax({
-    url: url,
-    type: 'patch',
-    dataType: 'json',
-    data: recipeData
-  })
-  .done(function(json){
-    console.log("reicpe updated");
-  })
 }
