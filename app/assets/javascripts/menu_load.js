@@ -35,7 +35,6 @@ function displayMenu(data){
   $(".profile-content").append(`<div class="menu-box">
   </div>`)
   $.each(currentUserMenuDays, function(index, mealElement){
-    debugger;
     //Add the mealElements to build the menu.
     $(`.menu-box`).append(`
       <div class="meal-${mealElement.date}-container">

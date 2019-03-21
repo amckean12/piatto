@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This goal of this rails application is to create a weekly meal plan with recipes that a user generates.
 
-Things you may want to cover:
 
-* Ruby version
+#Installation Instructions
 
-* System dependencies
+1. Fork repo
+2. Clone Repo
+3. Bundle Installation
+4. Rake db:migrate
+5. Rails s
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project has been licensed under the MIT open source license.
