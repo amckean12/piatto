@@ -12,7 +12,7 @@ class Recipe{
   }
 
   //Displays a recipe instance when clicked on
-  displayRecipe(recipe){
+  displayRecipe(){
     $(".loaded-recipes").remove();
     $(".profile-content").append(`<div class="recipe-${this.id}-container">
       <button class="edit-recipe-button" data-button=${this.id}>Edit Recipe</button>
@@ -44,8 +44,8 @@ class Recipe{
       </div>  `);
     }
 
-    displayRecipeEditForm(recipe){
-      alert("This is working");
-      $(".profile-content").append(`<div class="edit-recipe-container"></div>`);
-    }
+    // displayRecipeEditForm(recipe){
+    //   alert("This is working");
+    //   $(".profile-content").append(`<div class="edit-recipe-container"></div>`);
+    // }
 }

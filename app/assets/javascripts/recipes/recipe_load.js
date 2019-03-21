@@ -45,12 +45,6 @@ function loadRecipeContent(recipe_id){
     dataType: 'json'
   }).done(function(data){
     let currentSelectedRecipe = new Recipe(data)
-    createRecipePage(currentSelectedRecipe);
+    currentSelectedRecipe.displayRecipe();
   });
-}
-
-//Create Recipe page by calling a recipe class function
-function createRecipePage(recipe){
-   let completeRecipe = recipe;
-   completeRecipe.displayRecipe(recipe);
 }

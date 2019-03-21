@@ -1,9 +1,6 @@
-$(document).ready(function() {
-  attachRecipeCreateListener();
-});
+$(attachRecipeCreateListener);
 
 function attachRecipeCreateListener(){
-  $(function () {
   $('form').submit(function(event) {
     //prevent form from submitting the default way
     event.preventDefault();
@@ -11,9 +8,7 @@ function attachRecipeCreateListener(){
     let posting = $.post('/recipes', values);
     posting.done(function(data) {
       let recipe = data;
-      debugger;
-      $(".new-recipe-container").remove();
-      $(".profile-content").append(`
+      $(".recipe-form").append(`
         <div class="recipe-content">
           <h2>Name</h2>
           <p>${recipe.name}</p>
@@ -40,5 +35,4 @@ function attachRecipeCreateListener(){
         </div>  `);
      });
   });
-});
 }
