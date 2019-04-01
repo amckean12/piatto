@@ -2,12 +2,13 @@ $(document).ready(function() {
   attachRecipeListeners();
 });
 
+
+
 //Event Listeners for recipe actions
-function attachRecipeListeners(){
+const attachRecipeListeners = () =>{
   //When this button is clicked run the loadRecipes() function.
-  $(".recipe-link").on("click", function(){
-    loadRecipes();
-  });
+  //ES6
+  $(".recipe-link").on("click", (event) => {loadRecipes()});
 
   //This is a way to add an event listener to a button that hasnt been created yet
   $(".profile-content").on('click', ".listed-recipe-link", function(){
@@ -23,19 +24,25 @@ function attachRecipeListeners(){
 }
 
 
-function loadRecipes(){
+const loadRecipes = () => {
   //pulling from api
-  $.get(`/users/id/recipes.json`, function(recipe){
+  $.get(`/users/id/recipes.json`, (recipe) => {
+    $(".profile-content").append("<div class=recipe-sort-button-container><button class=recipe-sort>Sort Recipes Alphabetically</button></div><br><br>")
+    if ($(".loaded-recipes").length === 0){
     $(".profile-content").append("<div class=loaded-recipes></div>")
-    $.each(recipe, function(key, value){
+  }
+    $(".loaded-recipes").empty();
+    $.each(recipe, (key, value) => {
+      let newRecipeObj = new Recipe(value);
+      $(".loaded-recipes").append(newRecipeObj.buildRecipeButton());
       //creating recipe containers for each recipe
-      $(".loaded-recipes").append(`<div class="recipe-${value.id}-container"><button class="listed-recipe-link" data-button="${value.id}">${value.name}</button></div>`);
+      //$(".loaded-recipes").append(`<div class="recipe-${value.id}-container"><button class="listed-recipe-link" data-button="${value.id}">${value.name}</button></div>`);
     });
   });
 }
 
 
-function loadRecipeContent(recipe_id){
+const loadRecipeContent = (recipe_id) => {
   let recipeID = recipe_id
   let recipeURL = `http://localhost:3000/users/id/recipes/${recipeID}`
   //pulling from api
@@ -43,7 +50,7 @@ function loadRecipeContent(recipe_id){
     url: recipeURL,
     method: 'get',
     dataType: 'json'
-  }).done(function(data){
+  }).done((data) =>{
     let currentSelectedRecipe = new Recipe(data)
     currentSelectedRecipe.displayRecipe();
   });

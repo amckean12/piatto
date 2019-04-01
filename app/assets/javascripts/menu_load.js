@@ -2,18 +2,16 @@ $(document).ready(function() {
   attachMenuListeners();
 });
 
-function attachMenuListeners(){
-  $("button.menu-link").on("click", function(){
-    loadMenu();
-  });
+const attachMenuListeners = () => {
+  $("button.menu-link").on("click", () => {loadMenu()})
 }
 
-function loadMenu(){
+const loadMenu = () =>{
   $.ajax({
     url: 'http://localhost:3000/menus',
     method: 'get',
     dataType: 'json'
-  }).done(function(data){
+  }).done((data) => {
     //setting a variable that will create a JS Model Object of the most recent menu created by the user
     let currentUserMenu = new Menu(data[data.length-1])
     displayMenu(currentUserMenu);
@@ -34,7 +32,7 @@ function displayMenu(data){
   let currentUserMenuDays = currentUserMenu.meals
   $(".profile-content").append(`<div class="menu-box">
   </div>`)
-  $.each(currentUserMenuDays, function(index, mealElement){
+  $.each(currentUserMenuDays, (index, mealElement) => {
     //Add the mealElements to build the menu.
     $(`.menu-box`).append(`
       <div class="meal-${mealElement.date}-container">

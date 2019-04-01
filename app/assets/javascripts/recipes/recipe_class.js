@@ -1,5 +1,6 @@
-class Recipe{
+const allRecipes = [];
 
+class Recipe{
   //Builds a recipe instance
   constructor(obj){
     this.id = obj.id
@@ -9,6 +10,9 @@ class Recipe{
     this.carbs = obj.carbs
     this.protein = obj.protein
     this.fats = obj.fats
+    if (!allRecipes.find((recipe)=>recipe.id === this.id)){
+      allRecipes.push(this);
+    }
   }
 
   //Displays a recipe instance when clicked on
@@ -42,6 +46,10 @@ class Recipe{
         <h2>Fats</h2>
         <p>${this.fats}</p>
       </div>  `);
+    }
+
+    buildRecipeButton() {
+      return `<div class="recipe-${this.id}-container"><button class="listed-recipe-link" data-button="${this.id}">${this.name}</button></div>`;
     }
 
     // displayRecipeEditForm(recipe){
